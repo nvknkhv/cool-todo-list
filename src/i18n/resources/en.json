@@ -1,0 +1,43 @@
+{
+  "Common": {
+    "Button": {
+      "edit": "Edit",
+      "go": "Go to ticket",
+      "delete": "Delete",
+      "add": "Add",
+      "save": "Save",
+      "cancel": "Cancel",
+      "clear": "Clear",
+      "apply": "Apply",
+      "back": "Back to board"
+    },
+    "Status": {
+      "todo": "Todo",
+      "in_progress": "In progress",
+      "done": "Done"
+    }
+  },
+  "Notifications": {
+    "ticket_create": "Ticket has been added",
+    "ticket_edit": "Ticket has been edited",
+    "ticket_delete": "Ticket has been deleted",
+    "ticket_status_changed": "Status of the ticket \"{{name}}\" has been changed to \"$t(Common:Status.{{status}})\""
+  },
+  "TicketModal": {
+    "header_create": "Create ticket",
+    "header_edit": "Edit ticket",
+    "Errors": {
+      "required": "{{name}} is required"
+    }
+  },
+  "Fields": {
+    "title": "Title",
+    "description": "Description",
+    "tags": "Tags",
+    "status": "Status"
+  },
+  "DeleteConfirmation": {
+    "title": "Delete ticket?",
+    "description": "You can't undo this action afterwards."
+  }
+}

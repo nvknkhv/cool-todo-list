@@ -1,0 +1,47 @@
+.content {
+    margin-top: 24px;
+    max-width: 800px;
+    min-width: 300px;
+    margin: 0 auto;
+}
+
+.content__title {
+    margin-top: 14px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content__body {
+    padding:  14px 14px 25px;
+    border: 1px solid #CACACA;
+    border-radius: 7px;
+    word-break: break-all;
+}
+
+.content__body input {
+    margin-bottom: 8px;
+}
+
+.content__body textarea {
+    margin-bottom: 14px;
+}
+
+.content__body button {
+    margin-top: 14px;
+}
+
+.comments {
+    margin-top: 14px;
+}
+
+.container_centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.field:not(:last-child) {
+    margin-bottom: 16px;
+}

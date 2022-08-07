@@ -1,0 +1,46 @@
+.modal__inner {
+    padding: 14px 14px 28px;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .modal__inner {
+        padding: 14px 84px 28px;
+    }
+}
+
+.modal__content {
+    padding: 14px;
+    border: 1px solid #CACACA;
+    border-radius: 7px;
+}
+
+.modal__content input {
+    margin-bottom: 8px;
+}
+
+.modal__content textarea {
+    margin-bottom: 14px;
+}
+
+.modal__content button {
+    margin-top: 14px;
+}
+
+.error {
+    margin-top: 8px;
+    font-family: 'YS Text Regular';
+    font-size: 12px;
+    color: red;
+}
+
+.spinner {
+    z-index: 2;
+    position: absolute;
+    top: calc(50% - 23px);
+    left: calc(50% - 23px);
+}
+
+.field:not(:last-child) {
+    margin-bottom: 16px;
+}

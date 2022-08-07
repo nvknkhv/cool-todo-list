@@ -1,0 +1,27 @@
+.ticketList {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}
+
+.ticketList__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    box-sizing: border-box;
+    border: 1px solid #CACACA;
+    border-radius: 7px;
+    min-height: 500px;
+    align-items: center;
+}
+
+.link_full {
+    width: 100%;
+    display: block;
+}
+
+.button_full {
+    width: 100%;
+}

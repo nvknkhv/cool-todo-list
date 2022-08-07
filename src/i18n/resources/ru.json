@@ -1,0 +1,44 @@
+{
+  "Common": {
+    "Button": {
+      "edit": "Редактировать",
+      "go": "Перейти к задаче",
+      "delete": "Удалить",
+      "add": "Добавить",
+      "save": "Сохранить",
+      "cancel": "Отменить",
+      "clear": "Очистить",
+      "apply": "Применить",
+      "back": "Вернуться к доске"
+    },
+    "Status": {
+      "todo": "Выполнить",
+      "in_progress": "В процессе",
+      "done": "Готово"
+    }
+  },
+  "Notifications": {
+    "ticket_create": "Задача добавлена",
+    "ticket_edit": "Задача изменена",
+    "ticket_delete": "Задача удалена",
+    "ticket_status_changed": "Cтатус задачи \"{{name}}\" изменен на \"$t(Common:Status.{{status}})\""
+
+  },
+  "TicketModal": {
+    "header_create": "Создать задачу",
+    "header_edit": "Редактировать задачу",
+    "Errors": {
+      "required": "{{name}} обязательно"
+    }
+  },
+  "Fields": {
+    "title": "Название",
+    "description": "Описание",
+    "tags": "Теги",
+    "status": "Статус"
+  },
+  "DeleteConfirmation": {
+    "title": "Удалить тикет?",
+    "description": "Вы не сможете отменить это действие впоследствии."
+  }
+}
