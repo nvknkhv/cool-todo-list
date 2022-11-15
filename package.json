@@ -4,7 +4,7 @@
   "author": "Natalya Konokhova",
   "license": "ISC",
   "description": "",
-  "homepage": "https://nvknkhv.github.io/todo-tist",
+  "homepage": "https://nvknkhv.github.io/cool-todo-tist",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/webpack.dev.js --progress",
     "start:prod": "cross-env NODE_ENV=production webpack-dev-server --config ./webpack/webpack.prod.js --progress",
