@@ -9,7 +9,7 @@ module.exports = merge(common, {
     devtool: 'cheap-source-map',
     output: {
         filename: 'js/[name].[hash:8].js',
-        publicPath: '/component-library/',
+        publicPath: '/cool-todo-list/',
     },
     optimization: {
         minimizer: [new TerserPlugin()],
