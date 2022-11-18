@@ -61,6 +61,8 @@ const TagsSelect: React.FC<{
         onChange={onChange}
         menuPlacement="bottom"
         placeholder=""
+        onBlur={(event) => event.preventDefault()}
+        autoFocus={false}
       />
     </Wrapper>
   );

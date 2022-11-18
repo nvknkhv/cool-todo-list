@@ -30,9 +30,9 @@ const defaultTickets: Record<Status, Ticket[]> = {
   [Status.InProgress]: [
     {
       ticketId: uuidv4(),
-      title: 'Составить резюме',
+      title: 'Отдохнуть',
       status: Status.InProgress,
-      description: 'Дедлайн - 01.02.2022',
+      description: 'Без дедлайна',
       tags: [],
       comments: [],
     },

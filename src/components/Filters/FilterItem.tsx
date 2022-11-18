@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { isEmpty } from 'lodash';
 
@@ -9,9 +9,9 @@ import {
   PopoverContent,
   PopoverArrow,
   PopoverBody,
-  useDisclosure,
   VStack,
   ButtonGroup,
+  useOutsideClick,
 } from '@chakra-ui/react';
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
 import { FilterFilled, Filter } from '~/assets/icons';
@@ -36,26 +36,39 @@ const FilterItem: FC<{
 }) => {
   const { t } = useTranslation(['Fields', 'Common']);
   const dispatch = useAppDispatch();
-  const { onOpen, onClose, isOpen } = useDisclosure();
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const triggerButtonRef = React.useRef(null);
+  const popupContentRef = React.useRef(null);
+
+  useOutsideClick({
+    ref: popupContentRef,
+    handler: (event) => {
+      if (event.target !== triggerButtonRef?.current) {
+        setIsFilterOpen(false);
+      }
+    },
+  });
+
   return (
     <Popover
-      isOpen={isOpen}
-      onOpen={onOpen}
+      isOpen={isFilterOpen}
       onClose={() => {
-        onClose();
         resetFilterValue();
       }}
+      autoFocus={false}
     >
       <PopoverTrigger>
         <Button
-          rightIcon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
+          rightIcon={isFilterOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
           leftIcon={isActive ? <FilterFilled /> : <Filter />}
           variant="ghost"
+          onClick={() => setIsFilterOpen(!isFilterOpen)}
+          ref={triggerButtonRef}
         >
           {t(`Fields:${field}`)}
         </Button>
       </PopoverTrigger>
-      <PopoverContent p={3}>
+      <PopoverContent p={3} ref={popupContentRef}>
         <PopoverArrow />
         <PopoverBody>
           <VStack spacing={4}>
@@ -65,7 +78,7 @@ const FilterItem: FC<{
                 variant="ghost"
                 onClick={() => {
                   dispatch(resetFilter({ field }));
-                  onClose();
+                  setIsFilterOpen(false);
                   onReset();
                 }}
                 isDisabled={isEmpty(value)}
@@ -80,7 +93,7 @@ const FilterItem: FC<{
                   } else {
                     dispatch(setFilter({ field, value }));
                   }
-                  onClose();
+                  setIsFilterOpen(false);
                 }}
               >
                 {t('Common:Button.apply')}
