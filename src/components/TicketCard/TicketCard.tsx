@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import classnames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Badge, Heading, useToast, Tooltip } from '@chakra-ui/react';
+import { Badge, Heading, Tooltip } from '@chakra-ui/react';
 import {
   InfoOutlineIcon,
   ChatIcon,
@@ -94,16 +94,16 @@ export const TicketCard: FC<Ticket & { index: number }> = ({
                 styles.card__actions_bottom,
               )}
             >
-              {description && (
-                /* <Tooltip label="Есть описание">*/
-                <InfoOutlineIcon />
-                /* </Tooltip>*/
+              {/* {description && (
+                <Tooltip label="Есть описание">
+                  <InfoOutlineIcon />
+                </Tooltip>
               )}
               {comments.length > 0 && (
-                /* <Tooltip label="Есть комментарии">*/
-                <ChatIcon />
-                /* </Tooltip>*/
-              )}
+                <Tooltip label="Есть комментарии">
+                  <ChatIcon />
+                </Tooltip>
+              )}*/}
             </div>
           </div>
         </article>
