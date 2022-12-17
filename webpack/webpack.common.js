@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const jsLoaders = require('./loaders/js-loaders');
 const cssLoaders = require('./loaders/css-loaders');
@@ -54,6 +55,7 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
         }),
+        new FaviconsWebpackPlugin('assets/img/board.png'),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, sourceFolder, 'index.html'),
         }),

@@ -7,6 +7,7 @@ import TicketModal from '~/modals/TicketModal';
 import MainPage from '~/pages/MainPage';
 import TaskPage from '~/pages/TicketPage';
 import { createPath, editPath } from '~/modals/TicketModal/route';
+import CommentModal from '~/modals/CommentModal';
 import { deletePath } from '~/components/TicketDeleteConfirmationByRoute/route';
 import TicketDeleteConfirmationByRoute from '~/components/TicketDeleteConfirmationByRoute';
 import LayoutHeader from '~/components/Header';
@@ -39,15 +40,8 @@ function App() {
             />
           </Route>
           <Route {...TaskPage}>
-            {/*<Route
-              path="comment/add"
-              element={
-                <Modal>
-                  <CommentModal />
-                </Modal>
-              }
-            />*/}
-            <Route path="*" element={<Navigate replace to={TaskPage.path} />} />
+            <Route path="comment/add" element={<CommentModal />} />
+            <Route path="*" element={<Navigate replace to={MainPage.path} />} />
           </Route>
           <Route path="*" element={<Navigate replace to={MainPage.path} />} />
         </Routes>

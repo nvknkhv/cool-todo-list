@@ -1,12 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { createSelector } from 'reselect';
 import { RootState } from '~/app/store';
-import { Ticket } from '~/model/Ticket';
+import { Tag } from '~/model/enums';
 
-type availableFilters = 'description' | 'tags';
+type availableFilters = 'description' | 'tags' | 'comments';
 
 interface FiltersStore {
-  filters: Partial<Pick<Ticket, availableFilters>>;
+  filters: {
+    description?: string;
+    tags?: Tag[];
+    comments?: boolean;
+  };
 }
 
 const initialState: FiltersStore = {

@@ -11,6 +11,8 @@ import {
   ModalOverlay,
 } from '@chakra-ui/modal';
 import { Button } from '@chakra-ui/react';
+import styles from './styles.module.css';
+import classnames from 'classnames';
 
 export const CustomModal: FC<{
   children: React.ReactNode;
@@ -38,7 +40,11 @@ export const CustomModal: FC<{
       <ModalContent>
         <ModalHeader>{title}</ModalHeader>
         <ModalCloseButton autoFocus={false} />
-        <ModalBody>{children}</ModalBody>
+        <ModalBody>
+          <div className={classnames(styles.modal__inner)}>
+            <div className={classnames(styles.modal__content)}>{children}</div>
+          </div>
+        </ModalBody>
         <ModalFooter>
           <Button mr={3} variant="ghost" onClick={onClose}>
             {t('Button.cancel')}

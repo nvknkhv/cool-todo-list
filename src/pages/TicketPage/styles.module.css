@@ -1,5 +1,4 @@
 .content {
-    margin-top: 24px;
     max-width: 800px;
     min-width: 300px;
     margin: 0 auto;
@@ -29,7 +28,7 @@
 }
 
 .content__body button {
-    margin-top: 14px;
+    //margin-top: 14px;
 }
 
 .comments {
@@ -44,4 +43,10 @@
 
 .field:not(:last-child) {
     margin-bottom: 16px;
+}
+
+.comments {
+    margin-top: 24px;
+    border-top: 1px solid #CACACA;;
+    padding: 16px 0;
 }

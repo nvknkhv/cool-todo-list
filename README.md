@@ -27,3 +27,6 @@ open localhost:9000
 - ```@reduxjs/toolkit```, ```reselect``` - working with Redux
 - ```react-hook-form```  - library for working with forms
 - ```chakra-ui``` - component library
+
+## Preview
+<img src="./preview.png" alt="preview">

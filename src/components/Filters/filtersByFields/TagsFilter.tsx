@@ -12,7 +12,9 @@ const TagsFilter: FC = () => {
     <FilterItem
       field="tags"
       value={value}
-      onClose={() => setValue(filters.tags || [])}
+      onClose={() => {
+        setValue(filters.tags || []);
+      }}
       onReset={() => setValue([])}
       isActive={'tags' in filters}
     >

@@ -93,7 +93,7 @@ export const TicketModal: FC = () => {
       createTicketAsync({ ticketData: ticket, ticketStatus: creationStatus }),
     ).then(() => {
       toast({
-        title: t('Notifications:ticket', { context: 'create' }),
+        title: t('Notifications:ticket', { context: 'created' }),
         status: 'success',
         duration: 9000,
         isClosable: true,
@@ -119,7 +119,7 @@ export const TicketModal: FC = () => {
       }),
     ).then(() => {
       toast({
-        title: t('Notifications:ticket', { context: 'edit' }),
+        title: t('Notifications:ticket', { context: 'edited' }),
         status: 'success',
         duration: 9000,
         isClosable: true,
@@ -137,64 +137,58 @@ export const TicketModal: FC = () => {
   return (
     <form>
       <Modal
-        onClose={() => {
-          navigate(MainPage.path);
-        }}
-        isOpen
         title={t('TicketModal:header', {
           context: isEditing ? 'edit' : 'create',
         })}
+        isOpen
         onSubmit={handleSubmit(onSubmit)}
+        onClose={() => {
+          navigate(MainPage.path);
+        }}
         isSubmitting={status === 'loading'}
         isInvalid={Object.keys(errors).length > 0}
       >
-        <div className={classnames(styles.modal__inner)}>
-          {status === 'loading' && (
-            <>
-              <ModalOverlay />
-              <Spinner
-                size="lg"
-                color="orange"
-                speed="0.65s"
-                className={classnames(styles.spinner)}
-              />
-            </>
-          )}
-          {!data && isEditing ? (
+        {status === 'loading' && (
+          <>
+            <ModalOverlay />
             <Spinner
               size="lg"
               color="orange"
               speed="0.65s"
               className={classnames(styles.spinner)}
             />
-          ) : (
-            <div className={classnames(styles.modal__content)}>
-              <div className={classnames(styles.field)}>
-                <RHFInput
-                  name="title"
-                  control={control}
-                  required={true}
-                  label={t('Fields:title')}
-                />
-              </div>
-              <div className={classnames(styles.field)}>
-                <RHFTextarea
-                  name="description"
-                  control={control}
-                  label={t('Fields:description')}
-                  rows={6}
-                />
-              </div>
-              <div className={classnames(styles.field)}>
-                <RHFTags
-                  name="tags"
-                  control={control}
-                  label={t('Fields:tags')}
-                />
-              </div>
+          </>
+        )}
+        {!data && isEditing ? (
+          <Spinner
+            size="lg"
+            color="orange"
+            speed="0.65s"
+            className={classnames(styles.spinner)}
+          />
+        ) : (
+          <>
+            <div className={classnames(styles.field)}>
+              <RHFInput
+                name="title"
+                control={control}
+                required={true}
+                label={t('Fields:title')}
+              />
             </div>
-          )}
-        </div>
+            <div className={classnames(styles.field)}>
+              <RHFTextarea
+                name="description"
+                control={control}
+                label={t('Fields:description')}
+                rows={6}
+              />
+            </div>
+            <div className={classnames(styles.field)}>
+              <RHFTags name="tags" control={control} label={t('Fields:tags')} />
+            </div>
+          </>
+        )}
       </Modal>
     </form>
   );

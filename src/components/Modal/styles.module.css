@@ -1,0 +1,17 @@
+.modal__inner {
+    padding: 14px 14px 28px;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .modal__inner {
+        padding: 14px 84px 28px;
+    }
+}
+
+.modal__content {
+    padding: 14px;
+    border: 1px solid #CACACA;
+    border-radius: 7px;
+    min-height: 200px;
+}

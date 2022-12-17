@@ -7,6 +7,7 @@ import { filtersSelector } from '~/reducers/filtersSlice';
 const DescriptionFilter: FC = () => {
   const filters = useAppSelector(filtersSelector);
   const [value, setValue] = useState(filters.description ?? '');
+
   return (
     <FilterItem
       field="description"

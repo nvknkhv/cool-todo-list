@@ -20,9 +20,9 @@ import { setFilter, resetFilter } from '~/reducers/filtersSlice';
 import { Tag } from '~/model/enums';
 
 const FilterItem: FC<{
-  field: 'tags' | 'description';
+  field: 'tags' | 'description' | 'comments';
   children: React.ReactNode;
-  value: string | Tag[];
+  value: string | Tag[] | boolean;
   onClose: () => void;
   onReset: () => void;
   isActive: boolean;
@@ -45,18 +45,13 @@ const FilterItem: FC<{
     handler: (event) => {
       if (event.target !== triggerButtonRef?.current) {
         setIsFilterOpen(false);
+        resetFilterValue();
       }
     },
   });
 
   return (
-    <Popover
-      isOpen={isFilterOpen}
-      onClose={() => {
-        resetFilterValue();
-      }}
-      autoFocus={false}
-    >
+    <Popover isOpen={isFilterOpen} onClose={resetFilterValue} autoFocus={false}>
       <PopoverTrigger>
         <Button
           rightIcon={isFilterOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
@@ -81,17 +76,24 @@ const FilterItem: FC<{
                   setIsFilterOpen(false);
                   onReset();
                 }}
-                isDisabled={isEmpty(value)}
+                isDisabled={
+                  typeof value === 'boolean' ? !value : isEmpty(value)
+                }
               >
                 {t('Common:Button.clear')}
               </Button>
               <Button
                 colorScheme="orange"
                 onClick={() => {
-                  if (isEmpty(value)) {
-                    dispatch(resetFilter({ field }));
+                  if (typeof value === 'boolean') {
+                    if (value) dispatch(setFilter({ field, value }));
+                    else dispatch(resetFilter({ field }));
                   } else {
-                    dispatch(setFilter({ field, value }));
+                    if (isEmpty(value)) {
+                      dispatch(resetFilter({ field }));
+                    } else {
+                      dispatch(setFilter({ field, value }));
+                    }
                   }
                   setIsFilterOpen(false);
                 }}

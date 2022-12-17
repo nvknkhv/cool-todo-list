@@ -5,10 +5,10 @@ const KeyList: FC<{ data: Record<string, any> }> = ({ data }) => (
   <>
     {Object.entries(data).map(([key, value]) => (
       <Grid templateColumns="150px 1fr" gap={8} key={key}>
-        <GridItem mb={4}>
+        <GridItem>
           <Text as="b">{key}</Text>
         </GridItem>
-        <GridItem>
+        <GridItem mb={4}>
           {Array.isArray(value) ? (
             value.length === 0 ? (
               '-'
@@ -19,8 +19,10 @@ const KeyList: FC<{ data: Record<string, any> }> = ({ data }) => (
                 ))}
               </List>
             )
-          ) : (
+          ) : typeof value === 'string' ? (
             <Text>{value || '-'}</Text>
+          ) : (
+            value
           )}
         </GridItem>
       </Grid>

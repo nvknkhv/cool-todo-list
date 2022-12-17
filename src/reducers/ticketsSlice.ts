@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { createSelector } from 'reselect';
 
 import { RootState } from '~/app/store';
-import { Ticket } from '~/model/Ticket';
+import { Comment, Ticket } from '~/model/Ticket';
 import { Status } from '~/model/enums';
 import TicketsService from '~/services/TicketsService';
 
@@ -80,6 +80,24 @@ export const editTicketAsync = createAsyncThunk(
       ticketData,
       initialData,
       ticketId,
+    }),
+);
+
+export const addCommentToTicketAsync = createAsyncThunk(
+  'addCommentToTicket',
+  async ({ ticketId, comment }: { ticketId: string; comment: Comment }) =>
+    TicketsService.addCommentToTicket({
+      ticketId,
+      comment,
+    }),
+);
+
+export const deleteCommentFromTicketAsync = createAsyncThunk(
+  'deleteCommentFromTicket',
+  async ({ ticketId, commentId }: { ticketId: string; commentId: string }) =>
+    TicketsService.deleteCommentFromTicket({
+      ticketId,
+      commentId,
     }),
 );
 

@@ -9,7 +9,8 @@
       "cancel": "Отменить",
       "clear": "Очистить",
       "apply": "Применить",
-      "back": "Вернуться к доске"
+      "back": "Вернуться к доске",
+      "add_comment": "Добавить комментарий"
     },
     "Status": {
       "todo": "Выполнить",
@@ -18,27 +19,35 @@
     }
   },
   "Notifications": {
-    "ticket_create": "Задача добавлена",
-    "ticket_edit": "Задача изменена",
-    "ticket_delete": "Задача удалена",
-    "ticket_status_changed": "Cтатус задачи \"{{name}}\" изменен на \"$t(Common:Status.{{status}})\""
+    "ticket_created": "Задача добавлена",
+    "ticket_edited": "Задача изменена",
+    "ticket_deleted": "Задача удалена",
+    "ticket_status_changed": "Cтатус задачи \"{{name}}\" изменен на \"$t(Common:Status.{{status}})\"",
+    "comment_added": "Комментарий добавлен",
+    "comment_deleted": "Комментарий удален"
 
   },
   "TicketModal": {
     "header_create": "Создать задачу",
     "header_edit": "Редактировать задачу",
     "Errors": {
-      "required": "{{name}} обязательно"
+      "required": "Поле \"{{name}}\" обязательно"
     }
   },
   "Fields": {
     "title": "Название",
     "description": "Описание",
     "tags": "Теги",
-    "status": "Статус"
+    "status": "Статус",
+    "author": "Автор",
+    "text": "Комментарий",
+    "comments": "Комментарии"
   },
   "DeleteConfirmation": {
     "title": "Удалить тикет?",
     "description": "Вы не сможете отменить это действие впоследствии."
+  },
+  "Filters": {
+    "withComments": "С комментариями"
   }
 }

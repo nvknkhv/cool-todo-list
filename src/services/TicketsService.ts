@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import lsRequest from '~/api';
 import defaultTickets from '~/assets/defaultTickets';
-import { Ticket } from '~/model/Ticket';
+import { Ticket, Comment } from '~/model/Ticket';
 import { Status } from '~/model/enums';
 import { Tag } from '~/model/enums';
 
@@ -88,6 +88,64 @@ class TicketsAPI {
       ...fields,
     };
     await this.updateTickets(tickets);
+  }
+
+  async addCommentToTicket({
+    ticketId,
+    comment,
+  }: {
+    ticketId: string;
+    comment: Comment;
+  }): Promise<void> {
+    const tickets = await this.requestAllTickets();
+    let status: Status | undefined;
+    let ticketToEditIndex: number | undefined;
+    Object.entries(tickets).map(([st, values]) => {
+      const index = values.findIndex(({ ticketId: id }) => id === ticketId);
+      if (index !== -1) {
+        status = st as Status;
+        ticketToEditIndex = index;
+      }
+    });
+    if (status && ticketToEditIndex !== undefined) {
+      const ticketToEditData = tickets[status][ticketToEditIndex];
+      tickets[status][ticketToEditIndex] = {
+        ...ticketToEditData,
+        comments: [...ticketToEditData.comments, comment],
+      };
+      await this.updateTickets(tickets);
+    }
+  }
+
+  async deleteCommentFromTicket({
+    ticketId,
+    commentId,
+  }: {
+    ticketId: string;
+    commentId: string;
+  }): Promise<void> {
+    const tickets = await this.requestAllTickets();
+    let status: Status | undefined;
+    let ticketToEditIndex: number | undefined;
+    Object.entries(tickets).map(([st, values]) => {
+      const index = values.findIndex(({ ticketId: id }) => id === ticketId);
+      if (index !== -1) {
+        status = st as Status;
+        ticketToEditIndex = index;
+      }
+    });
+    if (status && ticketToEditIndex !== undefined) {
+      const ticketToEditData = tickets[status][ticketToEditIndex];
+      tickets[status][ticketToEditIndex] = {
+        ...ticketToEditData,
+        comments: [
+          ...ticketToEditData.comments.filter(
+            (item) => item.commentId !== commentId,
+          ),
+        ],
+      };
+      await this.updateTickets(tickets);
+    }
   }
 }
 

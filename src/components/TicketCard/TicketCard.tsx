@@ -2,9 +2,8 @@ import React, { FC } from 'react';
 import classnames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Badge, Heading, Tooltip } from '@chakra-ui/react';
+import { Badge, Heading } from '@chakra-ui/react';
 import {
-  InfoOutlineIcon,
   ChatIcon,
   ExternalLinkIcon,
   EditIcon,
@@ -24,7 +23,6 @@ import styles from './styles.module.css';
 export const TicketCard: FC<Ticket & { index: number }> = ({
   tags,
   title,
-  description,
   comments,
   ticketId,
   index,
@@ -33,7 +31,7 @@ export const TicketCard: FC<Ticket & { index: number }> = ({
   const navigate = useNavigate();
   return (
     <Draggable draggableId={ticketId} index={index}>
-      {(provided, snapshot) => (
+      {(provided) => (
         <article
           className={classnames(styles.card)}
           ref={provided.innerRef}
@@ -94,16 +92,7 @@ export const TicketCard: FC<Ticket & { index: number }> = ({
                 styles.card__actions_bottom,
               )}
             >
-              {/* {description && (
-                <Tooltip label="Есть описание">
-                  <InfoOutlineIcon />
-                </Tooltip>
-              )}
-              {comments.length > 0 && (
-                <Tooltip label="Есть комментарии">
-                  <ChatIcon />
-                </Tooltip>
-              )}*/}
+              {comments.length > 0 && <ChatIcon />}
             </div>
           </div>
         </article>

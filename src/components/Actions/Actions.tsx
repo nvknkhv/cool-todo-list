@@ -9,9 +9,17 @@ import {
 import { Dots } from '~/assets/icons';
 import { Action } from '~/model/Ticket';
 
-export const Actions: FC<{ actions: Action[] }> = ({ actions }) => (
+export const Actions: FC<{ actions: Action[]; isDisabled?: boolean }> = ({
+  actions,
+  isDisabled = false,
+}) => (
   <Menu>
-    <MenuButton as={IconButton} icon={<Dots />} size="xs" />
+    <MenuButton
+      as={IconButton}
+      icon={<Dots />}
+      size="xs"
+      disabled={isDisabled}
+    />
     <MenuList>
       {actions.map(({ icon, text, callback }) => (
         <MenuItem icon={icon} onClick={callback} key={text}>

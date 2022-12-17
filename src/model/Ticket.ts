@@ -3,6 +3,7 @@ import { Tag, Status } from '~/model/enums';
 export interface Comment {
   author: string;
   text: string;
+  commentId: string;
 }
 
 export interface Ticket {

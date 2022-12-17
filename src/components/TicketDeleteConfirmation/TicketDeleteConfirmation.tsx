@@ -30,7 +30,7 @@ const TicketDeleteConfirmation: FC<{
   const handleDelete = () => {
     dispatch(removeTicketAsync({ ticketId })).then(() => {
       toast({
-        title: t('Notifications:ticket', { context: 'delete' }),
+        title: t('Notifications:ticket', { context: 'deleted' }),
         status: 'success',
         duration: 9000,
         isClosable: true,

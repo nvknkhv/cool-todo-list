@@ -22,7 +22,6 @@ const Board: FC = () => {
   const tickets = useAppSelector(ticketsSelector);
   const filters = useAppSelector(filtersSelector);
 
-  //нужна ли мемоизация здесь?
   const filteredTickets = useMemo(() => {
     let tempTickets = Object.values(tickets).flat();
     Object.entries(filters).forEach(([filterName, filterValue]) => {
@@ -38,6 +37,8 @@ const Board: FC = () => {
                 sum = sum || ticket[filterName as 'tags'].includes(value);
                 return sum;
               }, false);
+            case 'comments':
+              return ticket.comments.length > 0;
           }
         }),
       ];
